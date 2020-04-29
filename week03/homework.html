@@ -1,0 +1,28 @@
+<script>
+    function convertStringToNumber (string, x = 10) {
+        let chars = string.split('');
+        let len = chars.length;
+        let number = 0;
+        let fraction = 1;
+        let i = 0;
+
+        while(i < len && chars[i] !== '.' ) {
+            number = number * x;
+            number += (chars[i].codePointAt(0) - '0'.codePointAt('0'));
+            i++;
+        }
+
+        if (chars[i] === '.') {
+            i++;
+        }
+
+        while (i < len) {
+            fraction = fraction / x;
+            number += (chars[i].codePointAt(0) - '0'.codePointAt('0')) * fraction;
+            i++;
+        }
+        return number;
+    }
+
+console.log(convertStringToNumber('10.02'));
+</script>
